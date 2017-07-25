@@ -96,9 +96,9 @@ class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
             3: self.edit_birthday_year.setText,
             4: self.edit_birthday_month.setText,
             5: self.edit_birthday_day.setText,
-            6: self.edit_city.setText,
-            7: self.edit_selsovet.setText,
-            8: self.edit_ksiva.setText,
+            6: self.edit_ksiva.setText,
+            7: self.edit_city.setText,
+            8: self.edit_selsovet.setText,
             9: self.edit_street.setText,
             10: self.edit_house.setText,
             11: self.edit_flat.setText
