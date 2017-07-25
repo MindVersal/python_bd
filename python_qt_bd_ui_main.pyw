@@ -18,6 +18,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.init_combobox_zodiak()
         self.init_all_listeners()
         self.check_box_interactive.setChecked(True)
+        self.statusBar().showMessage('Ожидание запроса.')
 
     def init_all_listeners(self):
         self.actionExit.triggered.connect(QtWidgets.qApp.quit)
@@ -37,6 +38,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.edit_street.returnPressed.connect(self.update_into_table)
         self.edit_house.returnPressed.connect(self.update_into_table)
         self.edit_flat.returnPressed.connect(self.update_into_table)
+        self.table_view_bd.doubleClicked.connect(self.table_double_clicked)
 
     def init_table_view_bd(self):
         list_names_of_schema = ['Фамилия', 'Имя', 'Отчество',
@@ -60,6 +62,7 @@ class MyWindow(QtWidgets.QMainWindow):
 
     def update_into_table(self):
         self.table_model.clear()
+        self.statusBar().showMessage('Поиск...')
         for row in python_qt_bd_controller.select_from_db(family=self.edit_family.text(),
                                                           name=self.edit_name.text(),
                                                           farther=self.edit_farther.text(),
@@ -76,6 +79,7 @@ class MyWindow(QtWidgets.QMainWindow):
                                                           interactive=self.check_box_interactive.isChecked()):
             self.table_model.appendRow([QtGui.QStandardItem(item) for item in row])
         self.init_table_view_bd()
+        self.statusBar().showMessage('Готово. Найдено: {}'.format(self.table_model.rowCount()))
 
     def init_combobox_zodiak(self):
         list_zodiak = ['', 'ОВЕН', 'ТЕЛЕЦ', 'БЛИЗНЕЦЫ', 'РАК', 'ЛЕВ', 'ДЕВА', 'ВЕСЫ',
@@ -83,6 +87,25 @@ class MyWindow(QtWidgets.QMainWindow):
         self.combobox_zodiak_model = QtCore.QStringListModel(list_zodiak)
         self.combobox_zodiak.setModel(self.combobox_zodiak_model)
         self.combobox_zodiak.setMaxVisibleItems(13)
+
+    def table_double_clicked(self, index):
+        map_colunms_to_edits = {
+            0: self.edit_family.setText,
+            1: self.edit_name.setText,
+            2: self.edit_farther.setText,
+            3: self.edit_birthday_year.setText,
+            4: self.edit_birthday_month.setText,
+            5: self.edit_birthday_day.setText,
+            6: self.edit_city.setText,
+            7: self.edit_selsovet.setText,
+            8: self.edit_ksiva.setText,
+            9: self.edit_street.setText,
+            10: self.edit_house.setText,
+            11: self.edit_flat.setText
+        }
+        temp_text = self.table_model.itemFromIndex(index).text()
+        temp_column = index.column()
+        map_colunms_to_edits[temp_column](temp_text)
 
     def clear_inputs_and_table(self):
         self.table_model.clear()

@@ -1,10 +1,6 @@
 import python_qt_bd_model
 
 
-def select_all_from_bd():
-    return python_qt_bd_model.select_all_from_bd()
-
-
 def select_from_db(family='', name='', farther='',
                    birthday_year='', birthday_month='', birthday_day='',
                    ksiva='', city='', selsovet='',
@@ -164,7 +160,7 @@ def select_from_db(family='', name='', farther='',
 
 def main():
     print('Test controller')
-    for row in python_qt_bd_model.select_all_from_bd():
+    for row in python_qt_bd_model.select_from_db():
         print(row)
 
 
