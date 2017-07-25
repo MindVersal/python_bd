@@ -10,7 +10,7 @@ def select_from_db(family='', name='', farther='',
                    ksiva='', city='', selsovet='',
                    street='',house='', flat='', sql_request=''):
     connector = (
-        r'E:/BD/2005.db'
+        r'2005.db'
     )
     engine = sqlalchemy.create_engine(r'sqlite:///{}'.format(connector))
     # sql_count = """
