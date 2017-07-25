@@ -1,15 +1,16 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-# from PyQt5 import uic
+from PyQt5 import uic
 import python_qt_bd_ui_about
 import python_qt_bd_controller
-import qt_bd_ui_main
+# import qt_bd_ui_main
 
 
-class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
+# class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
+class MyWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
-        # uic.loadUi(r'./qt_db_ui_main.ui', self)
-        self.setupUi(self)
+        uic.loadUi(r'./qt_bd_ui_main.ui', self)
+        # self.setupUi(self)
         QtWidgets.qApp.processEvents()
         self.table_model = QtGui.QStandardItemModel()
         self.combobox_zodiak_model = QtCore.QStringListModel()
@@ -44,18 +45,18 @@ class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
                                 'Улица', 'Дом', 'Кв.']
         self.table_model.setHorizontalHeaderLabels(list_names_of_schema)
         self.table_view_bd.setModel(self.table_model)
-        self.table_view_bd.setColumnWidth(0, 120)  # family
-        self.table_view_bd.setColumnWidth(1, 120)  # name
-        self.table_view_bd.setColumnWidth(2, 120)  # farther
-        self.table_view_bd.setColumnWidth(3, 50)  # year
+        self.table_view_bd.setColumnWidth(0, 90)  # family
+        self.table_view_bd.setColumnWidth(1, 90)  # name
+        self.table_view_bd.setColumnWidth(2, 110)  # farther
+        self.table_view_bd.setColumnWidth(3, 40)  # year
         self.table_view_bd.setColumnWidth(4, 45)  # month
-        self.table_view_bd.setColumnWidth(5, 40)  # day
+        self.table_view_bd.setColumnWidth(5, 35)  # day
         self.table_view_bd.setColumnWidth(6, 80)  # ksiva
         self.table_view_bd.setColumnWidth(7, 120)  # city
         self.table_view_bd.setColumnWidth(8, 100)  # selsovet
         self.table_view_bd.setColumnWidth(9, 150)  # street
-        self.table_view_bd.setColumnWidth(10, 40)  # house
-        self.table_view_bd.setColumnWidth(11, 40)  # flat
+        self.table_view_bd.setColumnWidth(10, 35)  # house
+        self.table_view_bd.setColumnWidth(11, 30)  # flat
 
     def update_into_table(self):
         self.table_model.clear()
