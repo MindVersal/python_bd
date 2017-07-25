@@ -1,0 +1,1 @@
+..\..\Python36\Scripts\pyuic5.exe qt_bd_ui_main.ui -o qt_bd_ui_main.py

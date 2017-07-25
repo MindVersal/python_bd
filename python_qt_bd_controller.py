@@ -78,7 +78,7 @@ def select_from_db(family='', name='', farther='',
                    temp_birthday_day[0],    # 1
                    '31',                    # 2
                    temp_birthday_month[1],  # 3
-                   '1',                     # 4
+                   '01',                    # 4
                    temp_birthday_day[1])    # 5
 
         birthday_month = ''

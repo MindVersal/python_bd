@@ -1,16 +1,16 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5 import uic
+# from PyQt5 import uic
 import python_qt_bd_ui_about
 import python_qt_bd_controller
-# import qt_bd_ui_main
+import qt_bd_ui_main
 
 
-# class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
-class MyWindow(QtWidgets.QMainWindow):
+class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
+# class MyWindow(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
-        uic.loadUi(r'./qt_bd_ui_main.ui', self)
-        # self.setupUi(self)
+        # uic.loadUi(r'./qt_bd_ui_main.ui', self)
+        self.setupUi(self)
         QtWidgets.qApp.processEvents()
         self.table_model = QtGui.QStandardItemModel()
         self.combobox_zodiak_model = QtCore.QStringListModel()
