@@ -108,8 +108,8 @@ class MyWindow(QtWidgets.QMainWindow, qt_bd_ui_main.Ui_MainWindow):
         map_colunms_to_edits[temp_column](temp_text)
 
     def clear_inputs_and_table(self):
-        self.table_model.clear()
-        self.init_table_view_bd()
+        # self.table_model.clear()
+        # self.init_table_view_bd()
         self.edit_family.setText('')
         self.edit_name.setText('')
         self.edit_farther.setText('')
