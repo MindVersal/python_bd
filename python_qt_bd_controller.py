@@ -181,13 +181,13 @@ def select_from_db(family='', name='', farther='',
             sql_request_where += """ AND """
         else:
             no_first_where_in_sql = True
-        sql_request_where += """ (STREET=\'{0}\')""".format(house.upper())
+        sql_request_where += """ (HOUSE=\'{0}\')""".format(house.upper())
     if flat != '':
         if no_first_where_in_sql:
             sql_request_where += """ AND """
         else:
             no_first_where_in_sql = True
-        sql_request_where += """ (STREET=\'{0}\')""".format(flat.upper())
+        sql_request_where += """ (FLAT=\'{0}\')""".format(flat.upper())
     if no_first_where_in_sql:
         sql_request = sql_request_start + sql_request_where
     else:
